@@ -135,14 +135,9 @@ class Header(object):
 some text
 
 
-~~~~{.python}
+~~~~{.%s}
     def classmethod(self):
         return "foo"
-~~~~~~~~~~~~~
-
-~~~~{.python}
-<class 'IndentationError'>
-unexpected indent (chunk, line 2)
 ~~~~~~~~~~~~~
 
 

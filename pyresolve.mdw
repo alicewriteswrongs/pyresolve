@@ -150,7 +150,4 @@ class Header(object):
     def genid(self):
         temp = random.choice(range(0, 65535))
         return temp.to_bytes(2, sys.byteorder)
-
-    def classmethod(self):
-        return "foo"
 @

@@ -134,6 +134,8 @@ we need to do:
 5. **TC**: may change to 1 in the response to indicate that the response
    was truncated (due to size constraints)
 
+6. 
+
 <<>>=
 class Header(object):
     def __init__(self):

@@ -11,12 +11,16 @@ explanations.
 Before we get into the code let's explain this whole literate Python thing
 a bit. I decided to use the [Pweave](https://github.com/mpastell/Pweave)
 module, since it has the most options for output formats (.md, .tex,
-.html, .rst, etc) and also lets you write you document's markup in
+.html, .rst, etc) and also lets you write your document's markup in
 a variety of languages.
 
 If you clone the repo to your computer you can do a `pip install -r
 requirements.txt` to get all the dependencies for this project (including
-Pweave). Then if you want to actually run the program you can do:
+Pweave). I'd recommend installing Pweave globally (rather than in
+a virtualenv) because I ran into some issues when trying to use it in
+a virtualenv.
+
+Then if you want to actually run the program you can do:
 
 ```bash
 Ptangle pyresolve.mdw

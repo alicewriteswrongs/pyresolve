@@ -87,6 +87,7 @@ But first, some import statements!
 
 ~~~~{.python}
 import random
+import sys
 ~~~~~~~~~~~~~
 
 
@@ -140,29 +141,19 @@ we need to do:
 ~~~~{.python}
 class Header(object):
     def __init__(self):
-        self.id = random.choice(range(0,65535))
+        self.id = self.genid()
         self.qr = 0b0
         self.opcode = 0b0
         self.aa = 0b0
         self.tc = 0b0
+        self.rd = 0b0
         self.ra = 0b0
         self.z = 0b000
-~~~~~~~~~~~~~
+        self.header = bytearray()
 
-
-
-
-some text
-
-
-~~~~{.python}
-    def classmethod(self):
-        return "foo"
-~~~~~~~~~~~~~
-
-~~~~{.python}
-<class 'IndentationError'>
-unexpected indent (chunk, line 2)
+    def genid(self):
+        temp = random.choice(range(0, 65535))
+        return temp.to_bytes(2, sys.byteorder)
 ~~~~~~~~~~~~~
 
 

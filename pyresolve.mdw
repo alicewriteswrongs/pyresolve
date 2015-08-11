@@ -155,7 +155,10 @@ we need to do:
 
 12. **NSCOUNT**:
 
-
+Whew! That was a lot. Most of these are zero though, which helps. We also
+are going to make one more class attribute, which is `self.header`. This
+will be equal to `bytearray(12)`, since we need 12 bytes to hold all the
+bits that are required in our header. Here's what that class looks like:
 
 <<>>=
 class Header(object):

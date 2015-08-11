@@ -116,26 +116,24 @@ kindly supplies us with more ASCII perfection:
 +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 ```
 
-Great, we're going to make a new class to hold all this info! The first
-attribute we're going to worry about is ID. This is a 16 bit identifier
-that we assign when we generate a query, and the responder will copy it
-onto our reply. This lets us match the response to the query that
-generated it, useful if we're firing off lots of them!
+Great, we're going to make a new class to hold all this info! Here is what
+we need to do:
+
+1. **ID** This is a 16 bit identifier that we assign when we generate
+  a query, and the responder will copy it onto our reply. This lets us
+  match the response to the query that generated it, useful if we're
+  firing off lots of them!
+
+2. **QR**: this is a one-bit field which specifies whether this is a query
+   (0) or a response (1). We want 0!
 
 
 ~~~~{.python}
 class Header(object):
     def __init__(self):
-        self.id = bytearray(bytes(2))
+        self.id = random.choice(range(0,65535))
         self.qdcount = bytearray(bytes(2))
-~~~~~~~~~~~~~
 
-
-
-some text
-
-
-~~~~{.%s}
     def classmethod(self):
         return "foo"
 ~~~~~~~~~~~~~

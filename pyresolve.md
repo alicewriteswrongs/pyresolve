@@ -164,8 +164,8 @@ we need to do:
 
 Whew! That was a lot. Most of these are zero though, which helps. We also
 are going to make one more class attribute, which is `self.header`. This
-will be equal to `bytearray(12)`, since we need 12 bytes to hold all the
-bits that are required in our header. Here's what that class looks like:
+will be equal to the 'genheader' method, which sticks everything together
+for us. Here's what that class looks like:
 
 
 ~~~~{.python}
@@ -184,11 +184,20 @@ class Header(object):
         self.ancount = numq
         self.nscount = 0b0
         self.arcount = 0b0
-        self.header = bytearray()
+        self.header = self.genheader()
 
     def genid(self):
         temp = random.choice(range(0, 65535))
         return temp.to_bytes(2, sys.byteorder)
+
+    def genheader(self):
+        "generate the header bytearray"
 ~~~~~~~~~~~~~
 
 
+
+All we want out of this `Header` class is a nice clean way to generate the
+bytearray for the header section, so we don't have too much going on here.
+We do some fancy bit-shifting and so on in `self.genheader` to actually
+get all the bits in the right places, but other than that nothing too
+exciting. 

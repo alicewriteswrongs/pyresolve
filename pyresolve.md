@@ -137,12 +137,33 @@ we need to do:
 5. **TC**: may change to 1 in the response to indicate that the response
    was truncated (due to size constraints)
 
-6. 
+6. **RD**: indicates we'd like the server to resolve our query
+   recursively.
+
+7. **RA**: the server can set this to indicate if recursion support is
+   available (we'll leave it 0)
+
+8. **Z**: this is reserved! For magical future use. We'll leave it set to
+   zero.
+
+9. **RCODE**: this gets set by the server when it's formulating its
+   response. 0 indicates success, 1-5 indicate various kinds of failures
+   or errors.
+
+10. **QDCOUNT**: 16 bits to specify how many questions we want to ask 
+    (this is passed in as 'numq').
+
+11. **ANCOUNT**: another 16 bits to specify how many resource records
+    we'll put the in the answer section (for the server to write into).
+
+12. **NSCOUNT**:
+
+
 
 
 ~~~~{.python}
 class Header(object):
-    def __init__(self):
+    def __init__(self, numq):
         self.id = self.genid()
         self.qr = 0b0
         self.opcode = 0b0
@@ -151,6 +172,11 @@ class Header(object):
         self.rd = 0b0
         self.ra = 0b0
         self.z = 0b000
+        self.rcode = 0b0000
+        self.qdcount = numq
+        self.ancount = numq
+        self.nscount = 0b0
+        self.arcount = 0b0
         self.header = bytearray()
 
     def genid(self):

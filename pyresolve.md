@@ -156,7 +156,7 @@ we need to do:
 11. **ANCOUNT**: another 16 bits to specify how many resource records
     we'll put the in the answer section (for the server to write into).
 
-12. **NSCOUNT**:
+12. **NSCOUNT**: 
 
 Whew! That was a lot. Most of these are zero though, which helps. We also
 are going to make one more class attribute, which is `self.header`. This

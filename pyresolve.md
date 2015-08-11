@@ -1,4 +1,3 @@
-
 #Resolving DNS queries with Python
 
 I read a nice [short cartoon](https://howdns.works/) about how DNS works,
@@ -36,9 +35,15 @@ working on Python 3, however!
    
 A note: Vim will open the file in Markdown mode (because it has the .md
 extension) but this may not be what you want - I would rather have syntax
-highlighting and plugins for the Python code than for the Markdown. So
-I have a Vim filetype modeline at the bottom of the file. Delete this if
-it annoys you!
+highlighting and plugins for the Python code when editing Python. So I did
+these two bindings in my `~/.vimrc`:
+
+```
+nnoremap <Leader>lp :setlocal ft=python<cr>
+nnoremap <Leader>md :setlocal ft=markdown<cr>
+```
+
+which works really smoothly!
 
 ##DNS queries
 
@@ -65,18 +70,36 @@ This is how the packet we're going to build for our DNS query is laid out:
 +---------------------+
 ```
 
-(the IETF's ASCII art skills are legendary!). Basically, I think we're
+(the IETF's ASCII art skills are legendary!). Basically, I think we`re
 going to try to do this as some sort of bytestring, which Python gives us
 lots of tools to work with.
 
-We're going to write a class to generate a query string:
+But first, some import statements!
 
 <<>>=
-class Query(object):
+import random
+@
+
+We`re going to write a class to generate a query string:
+
+<<>>=
+class Header(object):
+    def __init__(self):
+    max = 65535
+        self.id = bytearray(bytes(2))
+        self.qdcount = bytearray(bytes(2))
+@
+
+
+
+<<>>=
+    def classmethod(self):
+        return "foo"
+@
 
 
 
     
 
 
-/* vim: set filetype=py : */ 
+/* vim: set ft=python : */ 

@@ -86,6 +86,7 @@ But first, some import statements!
 
 <<>>=
 import random
+import sys
 @
 
 Alright, so basically the packet is going to contain a bunch of different
@@ -136,19 +137,20 @@ we need to do:
 <<>>=
 class Header(object):
     def __init__(self):
-        self.id = random.choice(range(0,65535))
+        self.id = self.genid()
         self.qr = 0b0
         self.opcode = 0b0
         self.aa = 0b0
         self.tc = 0b0
+        self.rd = 0b0
         self.ra = 0b0
         self.z = 0b000
-@
+        self.header = bytearray()
 
+    def genid(self):
+        temp = random.choice(range(0, 65535))
+        return temp.to_bytes(2, sys.byteorder)
 
-some text
-
-<<evaluate = False>>=
     def classmethod(self):
         return "foo"
 @

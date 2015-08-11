@@ -88,7 +88,36 @@ import random
 
 
 
-We`re going to write a class to generate a query string:
+Alright, so basically the packet is going to contain a bunch of different
+sections, each of which we'll handle as a different object.
+
+###Header
+
+The header is the first part of our query. It holds some information about
+what we are asking the server for, what kind of question, etc. The IETF
+kindly supplies us with more ASCII perfection:
+
+```
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+|                      ID                       |
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+|QR|   Opcode  |AA|TC|RD|RA|   Z    |   RCODE   |
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+|                    QDCOUNT                    |
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+|                    ANCOUNT                    |
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+|                    NSCOUNT                    |
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+|                    ARCOUNT                    |
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+```
+
+Great, we're going to make a new class to hold all this info! The first
+attribute we're going to worry about is ID. This is a 16 bit identifier
+that we assign when we generate a query, and the responder will copy it
+onto our reply. This lets us match the response to the query that
+generated it, useful if we're firing off lots of them!
 
 
 ~~~~{.python}
@@ -96,8 +125,6 @@ class Header(object):
     def __init__(self):
         self.id = bytearray(bytes(2))
         self.qdcount = bytearray(bytes(2))
-
-
 
     def classmethod(self):
         return "foo"

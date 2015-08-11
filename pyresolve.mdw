@@ -153,7 +153,11 @@ we need to do:
 11. **ANCOUNT**: another 16 bits to specify how many resource records
     we'll put the in the answer section (for the server to write into).
 
-12. **NSCOUNT**: 
+12. **NSCOUNT**: yet another 16 bits, this time for the number of records
+    stored in the authority records section.
+
+13. **ARCOUNT**: 16 more bits, to store the number of resource records in
+    the 'additional records' section.
 
 Whew! That was a lot. Most of these are zero though, which helps. We also
 are going to make one more class attribute, which is `self.header`. This

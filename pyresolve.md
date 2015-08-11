@@ -121,19 +121,41 @@ we need to do:
 
 1. **ID** This is a 16 bit identifier that we assign when we generate
   a query, and the responder will copy it onto our reply. This lets us
-  match the response to the query that generated it, useful if we're
+  match the response to the query that generated it, useful if we are
   firing off lots of them!
 
 2. **QR**: this is a one-bit field which specifies whether this is a query
    (0) or a response (1). We want 0!
+
+3. **OPCODE**: this identifies the query type. We just want standard query,
+   which means we want to use the value 0
+
+4. **AA**: this is 'authoritative answer', which will get changed in the
+   response.
+
+5. **TC**: may change to 1 in the response to indicate that the response
+   was truncated (due to size constraints)
 
 
 ~~~~{.python}
 class Header(object):
     def __init__(self):
         self.id = random.choice(range(0,65535))
-        self.qdcount = bytearray(bytes(2))
+        self.qr = 0b0
+        self.opcode = 0b0
+        self.aa = 0b0
+        self.tc = 0b0
+        self.ra = 0b0
+        self.z = 0b000
+~~~~~~~~~~~~~
 
+
+
+
+some text
+
+
+~~~~{.%s}
     def classmethod(self):
         return "foo"
 ~~~~~~~~~~~~~

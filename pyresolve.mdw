@@ -146,6 +146,7 @@ class Header(object):
 @
 
 
+some text
 
 <<evaluate = False>>=
     def classmethod(self):

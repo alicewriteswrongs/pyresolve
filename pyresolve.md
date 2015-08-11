@@ -81,13 +81,17 @@ lots of tools to work with.
 
 But first, some import statements!
 
-<<>>=
+
+~~~~{.python}
 import random
-@
+~~~~~~~~~~~~~
+
+
 
 We`re going to write a class to generate a query string:
 
-<<>>=
+
+~~~~{.python}
 class Header(object):
     def __init__(self):
         self.id = bytearray(bytes(2))
@@ -97,4 +101,6 @@ class Header(object):
 
     def classmethod(self):
         return "foo"
-@
+~~~~~~~~~~~~~
+
+

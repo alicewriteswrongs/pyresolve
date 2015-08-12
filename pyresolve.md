@@ -54,6 +54,12 @@ nnoremap <Leader>md :setlocal ft=markdown<cr>
 
 which works really smoothly!
 
+###Tests
+
+A side effect of all this is you need to Tangle the source in order to run
+the tests. There's a little shellscript called `tests.sh` that does this
+for you. If you've already installed Pweave globally it should work!
+
 ##DNS queries
 
 Anyway, how does DNS work? Well, it turns out it is sort of complicated!

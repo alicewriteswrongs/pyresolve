@@ -219,10 +219,8 @@ class Header(object):
 
 
 All we want out of this `Header` class is a nice clean way to generate the
-bytearray for the header section, so we do not have too much going on here.
-We do some fancy bit-shifting and so on in `self.genheader` to actually
-get all the bits in the right places, but other than that nothing too
-exciting. 
+bytearray for the header section, so we do not have too much going on
+here. We do some bit shifting 
 
 ###Questions
 

@@ -42,9 +42,6 @@ give you a `pyresolve.py` which you can run to test it out. I did not make
 any attempts to test for Python 2 compatibility, so it may not work with
 that. I am quite sure things are working on Python 3, however! 
 
-We need to do a small amount of configuration to get Pweave to behave
-nicely.
-  
 A note: Vim will open the file in Markdown mode (because it has the .md
 extension) but this may not be what you want - I would rather have syntax
 highlighting and plugins for the Python code when editing Python. So I did

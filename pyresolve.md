@@ -166,7 +166,7 @@ we need to do:
 Whew! That was a lot. Most of these are zero though, which helps. We also
 are going to make one more class attribute, which is `self.header`. This
 will be equal to the 'genheader' method, which sticks everything together
-for us. Since we need to generate a packet (which is binary data) we're 
+for us. Since we need to generate a packet (which is binary data) we will 
 going to use 'pack', from the struct module:
 
 
@@ -202,8 +202,25 @@ class Header(object):
         return temp.to_bytes(2, sys.byteorder)
 
     def genheader(self):
-        "generate the header bytearray"
-        return pack('',2)
+        """
+        generate the header bytearray
+        the only trick part is the 2nd line
+        """
+        secondline = (self.qr << 15) |
+            (self.opcode << 11) |
+            (self.aa << 10) |
+            (self.tc << 9) |
+            (self.rd << 8) |
+            (self.ra << 7) |
+            (self.z << 4) |
+            (self.rcode)
+
+        return pack('H',self.id,
+~~~~~~~~~~~~~
+
+~~~~{.python}
+<class 'SyntaxError'>
+invalid syntax (chunk, line 28)
 ~~~~~~~~~~~~~
 
 
@@ -218,16 +235,4 @@ exciting.
 
 This is the next section of our packet, which actually holds the questions
 that we want to ask the DNS server. Great!
-
-
-~~~~{.python}
-class Question
-~~~~~~~~~~~~~
-
-~~~~{.python}
-<class 'SyntaxError'>
-invalid syntax (chunk, line 2)
-~~~~~~~~~~~~~
-
-
 

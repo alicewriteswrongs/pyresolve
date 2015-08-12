@@ -182,7 +182,7 @@ Here is what that class looks like:
 ~~~~{.python}
 class Header(object):
     def __init__(self, numq):
-        self.id = self.genid()
+        self.id = random.choice(range(0, 65535))
         self.qr = 0b0
         self.opcode = 0b0
         self.aa = 0b0
@@ -197,30 +197,17 @@ class Header(object):
         self.arcount = 0b0
         self.header = self.genheader()
 
-    def genid(self):
-        temp = random.choice(range(0, 65535))
-        return temp.to_bytes(2, sys.byteorder)
-
     def genheader(self):
         """
         generate the header bytearray
         the only trick part is the 2nd line
         """
-        secondline = (self.qr << 15) |
-            (self.opcode << 11) |
-            (self.aa << 10) |
-            (self.tc << 9) |
-            (self.rd << 8) |
-            (self.ra << 7) |
-            (self.z << 4) |
-            (self.rcode)
+        secondline = (self.qr << 15) | (self.opcode << 11) | \
+            (self.aa << 10) | (self.tc << 9) | (self.rd << 8) | \
+            (self.ra << 7) | (self.z << 4) | (self.rcode)
 
-        return pack('H',self.id,
-~~~~~~~~~~~~~
-
-~~~~{.python}
-<class 'SyntaxError'>
-invalid syntax (chunk, line 28)
+        return pack('HHHHHH', self.id, secondline, self.qdcount,
+                self.ancount, self.nscount, self.arcount)
 ~~~~~~~~~~~~~
 
 

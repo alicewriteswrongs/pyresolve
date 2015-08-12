@@ -166,7 +166,17 @@ we need to do:
 Whew! That was a lot. Most of these are zero though, which helps. We also
 are going to make one more class attribute, which is `self.header`. This
 will be equal to the 'genheader' method, which sticks everything together
-for us. Here's what that class looks like:
+for us. Since we need to generate a packet (which is binary data) we're 
+going to use 'pack', from the struct module:
+
+
+~~~~{.python}
+from struct import pack
+~~~~~~~~~~~~~
+
+
+
+Here is what that class looks like:
 
 
 ~~~~{.python}
@@ -193,12 +203,31 @@ class Header(object):
 
     def genheader(self):
         "generate the header bytearray"
+        return pack('
+~~~~~~~~~~~~~
+
+~~~~{.python}
+<class 'SyntaxError'>
+EOL while scanning string literal (chunk, line 25)
 ~~~~~~~~~~~~~
 
 
 
 All we want out of this `Header` class is a nice clean way to generate the
-bytearray for the header section, so we don't have too much going on here.
+bytearray for the header section, so we do not have too much going on here.
 We do some fancy bit-shifting and so on in `self.genheader` to actually
 get all the bits in the right places, but other than that nothing too
 exciting. 
+
+##
+
+
+~~~~{.python}
+class Question
+~~~~~~~~~~~~~
+
+~~~~{.python}
+<class 'SyntaxError'>
+invalid syntax (chunk, line 2)
+~~~~~~~~~~~~~
+

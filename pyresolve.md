@@ -201,6 +201,8 @@ class Header(object):
         self.ancount = numq
         self.nscount = 0b0
         self.arcount = 0b0
+        if numq not in range(0, 65535):
+            raise ValueError("number of queries out of range")
         self.header = self.genheader()
 
     def genheader(self):
@@ -220,7 +222,11 @@ class Header(object):
 
 All we want out of this `Header` class is a nice clean way to generate the
 bytearray for the header section, so we do not have too much going on
-here. We do some bit shifting 
+here. We do some bit shifting to get the class variables into the right
+order. The `pack` function is a nifty little thing: we supply a format
+string ('HHHHHH' above) and a number of variables, and it produces a byte
+array with those variables formatting according to the format string. `H`
+tells pack to put in a 'short' integer, which takes up two bytes. 
 
 ###Questions
 

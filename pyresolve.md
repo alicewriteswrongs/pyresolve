@@ -208,7 +208,7 @@ class Header(object):
     def genheader(self):
         """
         generate the header bytearray
-        the only trick part is the 2nd line
+        the only tricky part is the 2nd line
         """
         secondline = (self.qr << 15) | (self.opcode << 11) | \
             (self.aa << 10) | (self.tc << 9) | (self.rd << 8) | \

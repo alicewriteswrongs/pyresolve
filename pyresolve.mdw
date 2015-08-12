@@ -196,7 +196,7 @@ class Header(object):
 
     def genheader(self):
         "generate the header bytearray"
-        return pack('
+        return pack('',2)
 @
 
 All we want out of this `Header` class is a nice clean way to generate the

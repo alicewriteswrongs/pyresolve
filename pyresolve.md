@@ -203,12 +203,7 @@ class Header(object):
 
     def genheader(self):
         "generate the header bytearray"
-        return pack('
-~~~~~~~~~~~~~
-
-~~~~{.python}
-<class 'SyntaxError'>
-EOL while scanning string literal (chunk, line 25)
+        return pack('',2)
 ~~~~~~~~~~~~~
 
 

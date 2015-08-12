@@ -194,6 +194,8 @@ class Header(object):
         self.ancount = numq
         self.nscount = 0b0
         self.arcount = 0b0
+        if numq not in range(0, 65535):
+            raise ValueError("number of queries out of range")
         self.header = self.genheader()
 
     def genheader(self):

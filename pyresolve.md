@@ -234,5 +234,18 @@ on the questions section, which is the next part of our query packet.
 ###Questions
 
 This is the next section of our packet, which actually holds the questions
-that we want to ask the DNS server. Great!
+that we want to ask the DNS server. Great! More ASCII art fun:
+
+```
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+|                                               |
+/                     QNAME                     /
+/                                               /
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+|                     QTYPE                     |
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+|                     QCLASS                    |
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+```
+
 

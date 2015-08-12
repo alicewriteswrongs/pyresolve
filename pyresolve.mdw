@@ -194,7 +194,7 @@ class Header(object):
         self.ancount = numq
         self.nscount = 0b0
         self.arcount = 0b0
-        if numq not in range(0, 65535):
+        if numq not in range(0, 65535) or type(numq) == float:
             raise ValueError("number of queries out of range")
         self.header = self.genheader()
 
@@ -218,6 +218,9 @@ order. The `pack` function is a nifty little thing: we supply a format
 string ('HHHHHH' above) and a number of variables, and it produces a byte
 array with those variables formatting according to the format string. `H`
 tells pack to put in a 'short' integer, which takes up two bytes. 
+
+Great! So once we have a header that looks nice we can move on to working
+on the questions section, which is the next part of our query packet.
 
 ###Questions
 

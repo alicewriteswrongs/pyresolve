@@ -23,6 +23,7 @@ class ResolveTests(unittest.TestCase):
         self.assertRaises(ValueError, Header, -1)
         self.assertRaises(ValueError, Header, 65535)
         self.assertRaises(ValueError, Header, -65535)
+        self.assertRaises(ValueError, Header, 1.0)
 
 
 if __name__ == '__main__':

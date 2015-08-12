@@ -224,7 +224,7 @@ All we want out of this `Header` class is a nice clean way to generate the
 bytearray for the header section, so we do not have too much going on
 here. We do some bit shifting to get the class variables into the right
 order. The `pack` function is a nifty little thing: we supply a format
-string ('HHHHHH' above) and a number of variables, and it produces a byte
+string (`HHHHHH` above) and a number of variables, and it produces a byte
 array with those variables formatting according to the format string. `H`
 tells pack to put in a 'short' integer, which takes up two bytes. 
 

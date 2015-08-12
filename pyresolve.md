@@ -219,7 +219,10 @@ We do some fancy bit-shifting and so on in `self.genheader` to actually
 get all the bits in the right places, but other than that nothing too
 exciting. 
 
-##
+###Questions
+
+This is the next section of our packet, which actually holds the questions
+that we want to ask the DNS server. Great!
 
 
 ~~~~{.python}
@@ -230,4 +233,6 @@ class Question
 <class 'SyntaxError'>
 invalid syntax (chunk, line 2)
 ~~~~~~~~~~~~~
+
+
 
